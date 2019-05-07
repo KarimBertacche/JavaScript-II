@@ -61,9 +61,17 @@ function contains(item, list, cb) {
 }
 
 /* STRETCH PROBLEM */
-
-function removeDuplicates(array, cb) {
-  // removeDuplicates removes all duplicate values from the given array.
+function removeDuplicates(array) {
+  const noDuplicates = array.reduce((accumulator, currentValue) => {
+    //Check if the element is present in the original array
+    if(accumulator.indexOf(currentValue) === -1){
+      //Add to the accumulator the array instance created using concat
+      return accumulator.concat(currentValue);
+    }
+    //return the accumulator for next iteration
+    return accumulator;
+  }, []);
   // Pass the duplicate free array to the callback function.
-  // Do not mutate the original array.
+  return noDuplicates;
 }
+
